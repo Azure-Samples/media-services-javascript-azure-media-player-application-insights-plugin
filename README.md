@@ -130,19 +130,74 @@ You can drill down and view your data directly in Application Insights.
 
 For more information, please see [usage and pricing](https://azure.microsoft.com/en-us/pricing/details/application-insights/) information.
 
-###Power BI Reports (optional)
+##Power BI Reports (optional)
 Power BI dashboard creation is option as you are able to view your data in Application Insights. However, it truly brings your data to life with easy to comprehend dashboards.  The following dashboard reports are pre-created for your convenience, however you are more than welcome to create your own dashboard inside of Power BI.
 
-If you don't already have an account, you can sign up for a [Power BI account](https://powerbi.com) today. For more information, please see [usage and pricing](https://powerbi.microsoft.com/en-us/pricing/) information.
+If you don't already have an account, you can sign up for [Power BI](https://powerbi.com) today. For more information, please see [usage and pricing](https://powerbi.microsoft.com/en-us/pricing/) information.
 
-####Application Insights Connector
+###Application Insights Connector
 The Application Insights Connector for Power BI is a convenient way to connect and show your basic application usage data.  At the time of writing this guide, only basic events get plumbed through to Power BI thought his connector.  For some users, this may have value and provide a basic overview of the content that is not playback specific.
 
+1. Log into [Power BI](https://powerbi.com)
+2. In the bottom left corner, select GET DATA. If the left pane menu is not expanded, you will see the arrow, which is the button for GET DATA.
+3. Under CONTENT PACK SERVICES, select GET under the SERVICES tab.
+4. Select APPLICATION INSIGHTS > CONNECT
+5. Follow the on-screen wizard to enter your Application Insights resource details. You can find all details about your Application Insights resource from the [Azure Portal](https://portal.azure.com)
 
-####Long term retention dashboards
-#####Azure Blob Storage
-#####Connecting to Power BI
-#####Scheduling refresh frequency for the data set
+![Application Insights Connector]()
+
+30 days of data is retained in Power BI through this connector.
+
+###Long term retention dashboards
+For longer term retention, and media central dashboards, its important to pull the data source from somewhere that allows for long term retention of data.  Application Insights has a feature to continuously export your data into Azure Storage in blobs.  Power BI has the ability to use Azure Storage as an input location for a dataset; which can be scheduled to refresh.  Power BI can refresh datasets up to 8 time per day for Pro and once per day for free.
+
+####Azure Blob Storage
+1. Go to your Application Insights resource in the [Azure Portal](https://portal.azure.com)
+2. Select SETTINGS > CONTINUOUS EXPORT > ADD
+3. Select CONFIGURED to select the data types you want to export. You should at least have CUSTOM EVENTS and METRIC on.
+4. Select DESTINATION STORAGE CONTAINER to select or create a new storage container.
+5. Select the storage account and add a container with Access Type as blob.
+6. Click OK
+
+Note it may take some time for the first export to complete - you will see "awaiting telemetry" as the status. You must wait until the first export is complete to continue. 
+
+![Continuous Export from Application Insights]()
+
+####Connecting to Power BI
+In order to connect blob storage with Power BI, you will need to use the Power BI Desktop which is available which you can [download](https://powerbi.microsoft.com/en-us/desktop/).
+
+1. Open "amp_appinsights.pbix" in the Power BI Desktop tool. It is normal to see "X Something is wrong on one or more fields" for each graph as the data has not yet been added.  
+2. Select EDIT QUERIES in the HOME menu on the top bar. AMP_data should be selected.
+3. Select ADVANCED EDITOR and replace the entire query with the text from "amp-appInsights-advanced-editor-query.txt".  
+	- Make sure to replace `AZURESTORAGENAME` from the query line `Source = AzureStorage.Blobs("AZURESTORAGENAME")`to the name of your blob storage 
+	- Make sure to replace `CONTAINERNAME` from the query line `ampdata = Source{[Name="CONTAINERNAME"]}[Data]`to the name of your container in the blob storage 
+
+![Power BI Advanced Query]()
+
+4. Select the SOURCE under APPLIED STEPS and then select EDIT CREDENTIALS
+
+![Edit credentials]()
+
+5. Enter your account key which can be obtained from the [Azure Portal](https://portal.azure.com). Go to your storage account resource, select the keys icon, and then copy the key into Power BI.
+
+![Get Storage Key]()
+
+6. Select CLOSE AND APPLY in the query editor
+7. Click PUBLISH and select destination
+
+You can now view your live report in [Power BI](https://powerbi.com) where you can modify and share.
+
+![Publish]()
+
+####Scheduling refresh frequency for the data set
+1. Log into [Power BI](https://powerbi.com)
+2. Open the left pane. Under DATASETS, click the "..." beside "amp_appinsights"
+3. Select SCHEDULE REFRESH
+4. Open the SCHEDULE REFRESH menu
+5. Change the "Keep your data up to date" to YES
+6. Select a refresh frequency of daily
+7. Under TIME, select ADD ANOTHER TIME, and select a time. Depending on your tier of Power BI, you add multiple times
+8. Click Apply
 
 ## TODO
 
