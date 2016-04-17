@@ -21,7 +21,7 @@ To learn more, read the full [blog](https://azure.microsoft.com/en-us/blog/playe
 ![Dashboard Sample](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/power-bi-dashboard.png)
 
 ###Plugin Options
-Check out the supported [options]().  By default, the only custom event that will send with the plugin will be the playback summary.  This so that the amount of traffic that is sent from the client to Application Insights is limited yet still provides a large range of dimensions to filter on and metrics to calculate.
+Check out the supported [options](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/blob/master/options.md).  By default, the only custom event that will send with the plugin will be the playback summary.  This so that the amount of traffic that is sent from the client to Application Insights is limited yet still provides a large range of dimensions to filter on and metrics to calculate.
 
 1. Dimensions for Filtering
 	- Browser/OS information
@@ -49,13 +49,13 @@ Special thanks to [William Zhang](https://github.com/willzhan) for his help and 
 	- Select NEW -> DEVELOPER SERVICES -> APPLICATION INSIGHTS
 	- Follow the on-screen wizard to complete the creation 
 
-![Create Application Insights Resource]()
+![Create Application Insights Resource](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/app-insights-creation.png)
 3. Get the Application Insights script with Instrumentation Key from your Application Insights resource
 	- Select BROWSE -> APPLICATION INSIGHTS -> *YOUR NEW RESOURCE*
 	- Select the QUICKSTART icon -> GET CODE TO MONITOR MY WEB PAGES 
 	- Copy the code in the "End-user usage analytics code" which will include the instrumentation key
 	
-![Get Application Insights Instrumentation Key]()
+![Get Application Insights Instrumentation Key](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/app-insights-instrumentation-key.png)
 
 #####More Information
 - [Visual Studio Application Insights](https://azure.microsoft.com/en-us/services/application-insights/)
@@ -93,7 +93,7 @@ Special thanks to [William Zhang](https://github.com/willzhan) for his help and 
 ```
 
 4. Add the plugin to AMP at initialization to load with the instance of AMP
-You can provide [options]() to the plugin either by passing them in the javascript or in the html.
+You can provide [options](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/blob/master/options.md) to the plugin either by passing them in the javascript or in the html.
 
 ```javascript
 var myOptions = {
@@ -126,7 +126,7 @@ You can drill down and view your data directly in Application Insights.
 - You can invoke Settings and Diagnostics pane any time by clicking on Settings icon at the top;
 - In Settings and Diagnostics pane, you can click on Usage button to go to Usage data;
 
-![Application Insights Graphs]()
+![Application Insights Graphs](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/app-insights-graph.png)
 
 For more information, please see [usage and pricing](https://azure.microsoft.com/en-us/pricing/details/application-insights/) information.
 
@@ -144,7 +144,7 @@ The Application Insights Connector for Power BI is a convenient way to connect a
 4. Select APPLICATION INSIGHTS > CONNECT
 5. Follow the on-screen wizard to enter your Application Insights resource details. You can find all details about your Application Insights resource from the [Azure Portal](https://portal.azure.com)
 
-![Application Insights Connector]()
+![Application Insights Connector](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/app-insights-power-bi-connector.png)
 
 30 days of data is retained in Power BI through this connector.
 
@@ -161,33 +161,33 @@ For longer term retention, and media central dashboards, its important to pull t
 
 Note it may take some time for the first export to complete - you will see "awaiting telemetry" as the status. You must wait until the first export is complete to continue. 
 
-![Continuous Export from Application Insights]()
+![Continuous Export from Application Insights](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/continuous-export.png)
 
 ####Connecting to Power BI
 In order to connect blob storage with Power BI, you will need to use the Power BI Desktop which is available which you can [download](https://powerbi.microsoft.com/en-us/desktop/).
 
-1. Open "amp_appinsights.pbix" in the Power BI Desktop tool. It is normal to see "X Something is wrong on one or more fields" for each graph as the data has not yet been added.  
+1. Open ["amp_appinsights.pbix"](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/blob/master/amp_appinsights.pbix?raw=true) in the Power BI Desktop tool. It is normal to see "X Something is wrong on one or more fields" for each graph as the data has not yet been added.  
 2. Select EDIT QUERIES in the HOME menu on the top bar. AMP_data should be selected.
-3. Select ADVANCED EDITOR and replace the entire query with the text from "amp-appInsights-advanced-editor-query.txt".  
+3. Select ADVANCED EDITOR and replace the entire query with the text from ["amp-appInsights-advanced-editor-query.txt"](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/blob/master/amp-appInsights-advanced-editor-query.txt).  
 	- Make sure to replace `AZURESTORAGENAME` from the query line `Source = AzureStorage.Blobs("AZURESTORAGENAME")`to the name of your blob storage 
 	- Make sure to replace `CONTAINERNAME` from the query line `ampdata = Source{[Name="CONTAINERNAME"]}[Data]`to the name of your container in the blob storage 
 
-![Power BI Advanced Query]()
+![Power BI Advanced Query](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/power-bi-query.png)
 
 4. Select the SOURCE under APPLIED STEPS and then select EDIT CREDENTIALS
 
-![Edit credentials]()
+![Edit credentials](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/blob-key.png)
 
 5. Enter your account key which can be obtained from the [Azure Portal](https://portal.azure.com). Go to your storage account resource, select the keys icon, and then copy the key into Power BI.
 
-![Get Storage Key]()
+![Get Storage Key](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/storage-keys.png)
 
 6. Select CLOSE AND APPLY in the query editor
 7. Click PUBLISH and select destination
 
 You can now view your live report in [Power BI](https://powerbi.com) where you can modify and share.
 
-![Publish]()
+![Publish](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/publish.png)
 
 ####Scheduling refresh frequency for the data set
 1. Log into [Power BI](https://powerbi.com)
