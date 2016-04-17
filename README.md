@@ -15,10 +15,10 @@ Analytics allow you to see how users are engaged with your products and services
 
 AMP is agnostic to a backend analytics service and works with various services. It supports a simple plugin model, outlined in our documentation, which can extend the player. This, in conjunction with the event model used in AMP, makes it easy to capture and send playback information to an analytics backend. This solution includes a Azure Media Player plugin for Application Insights, with data export to Azure Storage (optional) and dashboard visualization with Power BI (optional). 
 
-To learn more, read the full [blog](https://azure.microsoft.com/en-us/blog/player-analytics-azure-media-player-plugin/) which includes pricing details for each related service.  You can also learn more about player analytics and this solution extension from the [document]().
+To learn more, read the full [blog](https://azure.microsoft.com/en-us/blog/player-analytics-azure-media-player-plugin/) which includes pricing details for each related service.  You can also learn more about player analytics and this solution extension from the [document](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/blob/master/VideoTelemetry_AI.docx?raw=true).
 
 ###Preview of the finished Dashboard
-![Dashboard Sample]()
+![Dashboard Sample](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/power-bi-dashboard.png)
 
 ###Plugin Options
 Check out the supported [options]().  By default, the only custom event that will send with the plugin will be the playback summary.  This so that the amount of traffic that is sent from the client to Application Insights is limited yet still provides a large range of dimensions to filter on and metrics to calculate.
