@@ -50,6 +50,7 @@ Special thanks to [William Zhang](https://github.com/willzhan) for his help and 
 	- Follow the on-screen wizard to complete the creation 
 
 ![Create Application Insights Resource](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-application-insights-plugin/raw/master/img/app-insights-creation.png)
+
 3. Get the Application Insights script with Instrumentation Key from your Application Insights resource
 	- Select BROWSE -> APPLICATION INSIGHTS -> *YOUR NEW RESOURCE*
 	- Select the QUICKSTART icon -> GET CODE TO MONITOR MY WEB PAGES 
