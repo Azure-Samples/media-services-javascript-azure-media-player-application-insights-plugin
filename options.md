@@ -31,11 +31,9 @@ These are the metrics you want to send to Application Insights (known as custom 
 - `ProtectionType`: `none`, `aes`, `drm`
 - `isLive`: is the content live
 - `trackSdn` (if enabled): tracks if an SDN or eCDN was used
-
  
 **default:** The only metrics tracked by default is playbackSummary.
-  ```['playbackSummary']```
-
+```['playbackSummary']```
 
 Here are some more details about metrics:
 
