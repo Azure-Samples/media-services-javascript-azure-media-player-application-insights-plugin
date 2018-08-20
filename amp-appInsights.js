@@ -44,6 +44,9 @@
 
         var percentsPlayedInterval = options.percentsPlayedInterval || dataSetupOptions.percentsPlayedInterval || 20;
         options.debug = options.debug || false;
+        var tenantId = options.Tenant;
+        var PanelId = options.PanelId;
+        var PanelTitle = options.PanelTitle;
 
         //TrackEvent Properties
         if (options.userId || dataSetupOptions.userId) {
@@ -566,7 +569,7 @@
         }
 
         var end = function () {
-            if (metricsToTrack.playTime||metricsToTrack.playbackSummary) {
+            if (metricsToTrack.playTime || metricsToTrack.playbackSummary) {
                 if (player.isLive()) {
                     playTimeLive.pause();
                 }
@@ -639,7 +642,7 @@
                 totalPlayTime = playIntervals.getTotalPlayTime();
                 totalFullscreenTime = playIntervals.totalSecondsFullscreen;
                 totalPercentViewed = Math.min(Math.round((playIntervals.getTotalUniquePlayTime() / player.duration()) * 100), 100);
-            } 
+            }
 
             if (load.loadTime == 0) {
                 load.updateLoadTime();
@@ -691,7 +694,7 @@
                 if (player.error()) {
                     playbackSummaryMetric.errorCode = player.error().code.toString(16);
                 }
-                
+
 
                 trackEvent("playbackSummary", playbackSummaryMetric);
             }
@@ -706,8 +709,11 @@
                     PlayerVersion: player.getAmpVersion() || "unknown",
                     PlaybackTech: player.currentTechName() || "unknown",
                     MimeType: player.currentType() || "unknown",
-                    ProtectionType: currentProtectionInfo || "unkown",
+                    ProtectionType: currentProtectionInfo || "unknown",
                     isLive: player.isLive() ? "live" : "vod" || "unknown",
+                    Tenant: options.Tenant || "unknown",
+                    PanelId: options.PanelId || "unknown",
+                    PanelTitle: options.PanelTitle || "unknown"
                 };
 
                 //additional logic incase loadedmetadata event hasn't fired to set streamId
