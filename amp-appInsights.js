@@ -44,7 +44,7 @@
 
         var percentsPlayedInterval = options.percentsPlayedInterval || dataSetupOptions.percentsPlayedInterval || 20;
         options.debug = options.debug || false;
-        var tenantId = options.Tenant;
+        var Tenant = options.Tenant;
         var PanelId = options.PanelId;
         var PanelTitle = options.PanelTitle;
 
