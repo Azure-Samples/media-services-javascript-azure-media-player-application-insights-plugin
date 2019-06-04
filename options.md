@@ -78,11 +78,11 @@ sends the average bitrate after the stream is finishes, changes or the user exit
 #### `downloadInfo`
 sends the information about each downloaded for both completion for media segments providing bitrate, measured bandwidth and perceived bandwidth. It fires on failed segment downloads.
 
-##percentsPlayedInterval
+## percentsPlayedInterval
 
 This options goes with the ```percentsPlayed``` event. Every ```percentsPlayedInterval``` percents an event will be sent to Application Insights.
 **default:** 20
 
-##trackSdn
+## trackSdn
 Adds SDN tracking into properties when tracking metrics.
 **default:** false
