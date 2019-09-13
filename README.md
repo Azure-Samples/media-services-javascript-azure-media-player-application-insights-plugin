@@ -1,7 +1,12 @@
 ---
-services: media-services
-platforms: javascript
-author: rajputam
+page_type: sample
+languages:
+- javascript
+- html
+products:
+- azure
+description: "Application Insights Plugin for Azure Media Player with Power BI visualization"
+urlFragment: media-services-javascript-azure-media-player-application-insights-plugin
 ---
 
 # Media Services: Application Insights Plugin for Azure Media Player with Power BI dashboards
