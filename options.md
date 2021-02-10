@@ -1,13 +1,13 @@
-#Options
+# Options
 The following options are supported:
 
-##streamId
+## streamId
 
 Name of the stream or event to track and filter on.
 
 **default:** source of the video path so if the path is ```http://amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest(format=mpd-time-csf)``` the label would be ```amssamples.streaming.mediaservices.windows.net/91492735-c523-432b-ba01-faba6c2206a2/AzureMediaServicesPromo.ism/manifest```
 
-##userId
+## userId
 
 By default, the user is identified by placing a cookie. A user who uses multiple browsers or devices will be counted more than once. If your web app lets users sign in, you can get a more accurate count by providing Application Insights with a unique user identifier. It doesn't have to be their name, or the same id that you use in your app. 
 
@@ -15,11 +15,11 @@ If your app groups users into accounts, you can also pass an identifier for the 
 
 The user and account ids must not contain spaces or the characters `,;=|`
 
-##debug
+## debug
 If set to false, console logs will be omitted
 **default:** ```false```
 
-##metricsToTrack
+## metricsToTrack
 
 These are the metrics you want to send to Application Insights (known as custom events in Application Insights). All metrics send with the following properties to be able to filter on:
 
@@ -37,7 +37,7 @@ These are the metrics you want to send to Application Insights (known as custom 
 
 Here are some more details about metrics:
 
-####```playbackSummary```
+#### ```playbackSummary```
 
 sends a summary of the playback with the following details:
 
@@ -51,38 +51,38 @@ sends a summary of the playback with the following details:
 - `failedDownloads`: Number of failed downloaded fragments (this does not signify there was a playback error as there is player retry logic and robustness)
 - `errorCode`: If applicable, provides the error code.
 
-####`loaded` 
+#### `loaded` 
 sends an event whenever the player is loaded on ```loadedmetadata``` event from the player with information about the loading time in milliseconds. Note, just because the player is loaded, does not mean a view took place
-####`viewed` 
+#### `viewed` 
 sends when a player actually starts playing.
-####`ended` 
+#### `ended` 
 sends an event that the end of the video was reached
-####`playTime` 
+#### `playTime` 
 sends an event when the page is closed or if the stream is switched regarding cumulative amount that the video was watched in seconds
-####`percentsPlayed` 
+#### `percentsPlayed` 
 will send an event every X percents. X being defined by the option ```percentsPlayedInterval```.
-####`play`
+#### `play`
 sends an event on each play action from the player
-####`pause` 
+#### `pause` 
 sends an event on each pause action from the player
-####`seek` 
+#### `seek` 
 sends an event on each seek action from the player
-####`fullscreen` 
+#### `fullscreen` 
 sends event when entering and exiting fullscreen
-####`error`
+#### `error`
 sends on an error event with information about when the error occurred and what the HEX code of the error was.  It also sends a trace with the error when applicable 
-####`buffering` 
+#### `buffering` 
 sends an event when buffering occurs with the value of the time spend buffering
-####`bitrateQuality`
+#### `bitrateQuality`
 sends the average bitrate after the stream is finishes, changes or the user exits
-####`downloadInfo`
+#### `downloadInfo`
 sends the information about each downloaded for both completion for media segments providing bitrate, measured bandwidth and perceived bandwidth. It fires on failed segment downloads.
 
-##percentsPlayedInterval
+## percentsPlayedInterval
 
 This options goes with the ```percentsPlayed``` event. Every ```percentsPlayedInterval``` percents an event will be sent to Application Insights.
 **default:** 20
 
-##trackSdn
+## trackSdn
 Adds SDN tracking into properties when tracking metrics.
 **default:** false
